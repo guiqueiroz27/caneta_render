@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Inicial</title>
+    <script>
+        // função para redirecionar para a página selecionada
+        function redirecionarParaPagina() {
+            var pagina = document.getElementById("menuPaginas").value;
+            window.location.href = pagina;
+        }
+    </script>
+</head>
+<body>
+    <h1>Bem-vindo à página</h1>
+    <p>Esta é uma página HTML básica em português.</p>
+    
+    <!-- Dropdown menu para seleção das páginas -->
+    <select id="menuPaginas" onchange="redirecionarParaPagina()">
+        <option value="">Selecione uma Página</option>
+        <option value="/infos">Informações</option>
+        <option value="/projetos">Projetos (GitHub)</option>
+        <option value="/publicacoes">Publicações</option>
+    </select>
+
+</body>
+</html>

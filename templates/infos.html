@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Informações</title>
+    <script>
+        function redirecionarParaPagina() {
+            var pagina = document.getElementById("menuPaginas").value;
+            window.location.href = pagina;
+        }
+    </script>
+</head>
+<body>
+    <h1>Informações de Contato</h1>
+    <p>Detalhes de contato vão aqui.</p>
+    
+    <select id="menuPaginas" onchange="redirecionarParaPagina()">
+        <option value="">Selecione uma Página</option>
+        <option value="/">Página Inicial</option>
+        <option value="/projetos">Projetos (GitHub)</option>
+        <option value="/publicacoes">Publicações</option>
+    </select>
+</body>
+</html>
