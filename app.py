@@ -1,23 +1,31 @@
-from flask import Flask, render_template, request, redirect, url_for
-app = Flask(__name__) # Cria uma instância do Flask. 
+from flask import Flask, render_template
+from raspador import atualizar_planilha
 
-# Define rota da página principal
+app = Flask(__name__)
+
 @app.route('/')
 def index():
-    return render_template('index.html') # Renderiza o template index.html, localizado na pasta templates
+    return render_template('index.html')
 
 @app.route("/infos")
 def infos():
- return render_template('infos.html')
+    return render_template('infos.html')
 
 @app.route("/projetos")
 def projetos():
- return render_template('projetos.html')
+    return render_template('projetos.html')
 
 @app.route("/publicacoes")
 def publicacoes():
- return render_template('publicacoes.html')
+    return render_template('publicacoes.html')
+
+@app.route("/leissp")
+def leissp():
+    # Chamando a função atualizar_planilha() para obter o HTML das tabelas
+    tabela1_html, tabela2_html = atualizar_planilha()
+
+    # Passando o HTML das tabelas para o template leissp.html
+    return render_template('leissp.html', tabela1_html=tabela1_html, tabela2_html=tabela2_html)
 
 if __name__ == '__main__':
-  app.run(port=5000, debug=True) # Inicia o servidor na porta 5000. "Debug" é uma configuração para facilitar o desenvolvimento.
- 
+    app.run(port=5000, debug=True)

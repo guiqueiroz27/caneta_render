@@ -1,0 +1,6 @@
+bs4
+pandas
+requests
+gspread
+oauth2client
+datetime
