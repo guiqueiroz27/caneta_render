@@ -251,12 +251,12 @@ def atualizar_planilha(data_inicio='01/01/2024', planilha_key=gsheet_key, arquiv
 
     # Verifique se existem dados duplicados antes de adicionar novos dados aos DataFrames
     for index, row in tabela_leis_prefeitura_sp.iterrows():
-        if row.to_list() not in df_municipal.values.tolist():
-            df_municipal = df_municipal.append(row, ignore_index=True)
+        if not (df_municipal == row).all(axis=1).any():
+            df_municipal = pd.concat([df_municipal, row.to_frame().T], ignore_index=True)
     
     for index, row in tabela_leis_governo_sp.iterrows():
-        if row.to_list() not in df_estadual.values.tolist():
-            df_estadual = df_estadual.append(row, ignore_index=True)
+        if not (df_estadual == row).all(axis=1).any():
+            df_estadual = pd.concat([df_estadual, row.to_frame().T], ignore_index=True)
 
     # Transformar os DataFrames em tabelas HTML
     tabela_html_municipal = df_municipal.to_html(index=False)
@@ -268,6 +268,7 @@ def atualizar_planilha(data_inicio='01/01/2024', planilha_key=gsheet_key, arquiv
 
     # Retorne as tabelas HTML
     return tabela_html_municipal, tabela_html_estadual
+
 
 
 
