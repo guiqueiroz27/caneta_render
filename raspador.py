@@ -249,6 +249,10 @@ def atualizar_planilha(data_inicio='01/01/2024', planilha_key=gsheet_key, arquiv
     df_municipal = pd.DataFrame(dados_municipais[1:], columns=dados_municipais[0])
     df_estadual = pd.DataFrame(dados_estaduais[1:], columns=dados_estaduais[0])
 
+    # Verifique se existem dados duplicados antes de adicionar novos dados aos DataFrames
+    tabela_leis_prefeitura_sp = tabela_leis_prefeitura_sp[~tabela_leis_prefeitura_sp.duplicated()]
+    tabela_leis_governo_sp = tabela_leis_governo_sp[~tabela_leis_governo_sp.duplicated()]
+
     # Adicione novos dados aos DataFrames
     df_municipal = pd.concat([df_municipal, tabela_leis_prefeitura_sp], ignore_index=True)
     df_estadual = pd.concat([df_estadual, tabela_leis_governo_sp], ignore_index=True)
