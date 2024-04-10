@@ -1,6 +1,8 @@
 import os
+from oauth2client.service_account import ServiceAccountCredentials
 from flask import Flask, render_template
 from raspador import atualizar_planilha
+
 
 app = Flask(__name__)
 
