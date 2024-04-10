@@ -16,6 +16,8 @@ from email.mime.text import MIMEText
 
 """# Função raspagem governo de SP"""
 
+gsheet_key= os.environ["gsheet_key"]
+
 def leis_governo_sp(data_inicio, data_fim):
     cookies = {
         'OptanonConsent': 'isGpcEnabled=0&datestamp=Thu+Mar+14+2024+19%3A53%3A14+GMT-0300+(Hor%C3%A1rio+Padr%C3%A3o+de+Bras%C3%ADlia)&version=202302.1.0&isIABGlobal=false&hosts=&consentId=071ddc65-ae8a-499f-9d5c-72d6763c7a06&interactionCount=2&landingPath=NotLandingPage&groups=C0004%3A1%2CC0002%3A1%2CC0003%3A1%2CC0001%3A1&AwaitingReconsent=false&geolocation=BR%3BSP',
@@ -224,7 +226,7 @@ def leis_prefeitura_sp (data_inicio, data_fim):
 
 """# Função acessando e gravando dados novos GSheet"""
 
-def atualizar_planilha(data_inicio='01/01/2024', planilha_key='1RcuCbxS4rqLAt6TUNyfkWoqcxwqpr64fwLMLTNzFvtY', arquivo_credenciais="/Users/guilhermequeiroz/Desktop/INSPER/ALGORITMOS AUTOMAÇÃO/trabalho final pt.2/insperaa-f16b8130bed9.json"):
+def atualizar_planilha(data_inicio='01/01/2024', planilha_key='gsheet_key', arquivo_credenciais="insperaa-f16b8130bed9.json":
     # Obtenha a data atual
     data_fim = datetime.now().strftime('%d/%m/%Y')
 
