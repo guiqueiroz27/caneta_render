@@ -21,9 +21,11 @@ def publicacoes():
 
 @app.route("/leissp")
 def leissp():
-    arquivo_credenciais = "insperaa-f16b8130bed9.json"
+    arquivo_credenciais = os.path.join(os.getcwd(), "insperaa-f16b8130bed9.json")
+
     # Chamando a função atualizar_planilha() para obter o HTML das tabelas
-    tabela1_html, tabela2_html = atualizar_planilha()
+    tabela1_html, tabela2_html = atualizar_planilha(arquivo_credenciais=arquivo_credenciais)
+
 
     # Passando o HTML das tabelas para o template leissp.html
     return render_template('leissp.html', tabela1_html=tabela1_html, tabela2_html=tabela2_html)
