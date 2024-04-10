@@ -1,5 +1,8 @@
+bs4
+pandas
+requests
+gspread
+oauth2client
+datetime
 flask
-openai
-openai-whisper
-pymongo
-python-dotenv
+gunicorn
